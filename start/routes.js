@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,13 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
-const Database = use('Database')
+const Route = use("Route");
+const Database = use("Database");
 
-Route.get('/', async () => {
-  return await Database.raw('select * from images order by rand() limit 1')
-})
+Route.get("/", async () => {
+  //return await Database.raw('select * from images order by rand() limit 1')
+  return await Database.select("*")
+    .from("images")
+    .orderByRaw("RAND()")
+    .limit(1);
+});
