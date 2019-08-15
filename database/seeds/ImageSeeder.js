@@ -47,6 +47,7 @@ class ImageSeeder {
     } catch (err) {
       console.log("err", err);
     }
+    Database.close();
   }
 }
 
