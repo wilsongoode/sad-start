@@ -14,7 +14,8 @@
 const Factory = use("Factory");
 const Database = use("Database");
 const Scraper = require("images-scraper"),
-  google = new Scraper.Google();
+ bing = new Scraper.Bing();
+  //google = new Scraper.Google();
 
 class ImageSeeder {
   async run() {
@@ -34,15 +35,22 @@ class ImageSeeder {
         updated_at: Database.fn.now()
       });
       console.log("dummy: ", dummy);
-      console.log("line 37, trying to scrape...");
-      const scrape = await google.list({
-        keyword: "sad animal facts site:sadanimalfacts.com",
+      console.log("line 37, trying to scrape (with bing)...");
+      // const scrape = await google.list({
+      //   keyword: "sad animal facts site:sadanimalfacts.com",
+      //   num: numImagesToScrape,
+      //   detail: true,
+      //   nightmare: {
+      //     show: false //hides the chromium window that nightmare uses
+      //   }
+      // });
+      
+
+      const scrape = bing.list({
+        keyword: 'sad animal facts site:sadanimalfacts.com',
         num: numImagesToScrape,
-        detail: true,
-        nightmare: {
-          show: false //hides the chromium window that nightmare uses
-        }
-      });
+        detail: true
+      })
       console.log("line 46, got a list ...");
       console.log(`first ${numImagesToScrape} results from google`);
       for (let i = 0; i < scrape.length; i++) {
