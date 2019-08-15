@@ -18,6 +18,7 @@ const Scraper = require("images-scraper"),
 
 class ImageSeeder {
   async run() {
+    console.log("running imageseeder ...");
     // Runs the images-scraper script to search for and 
     // copy image urls into the images table of database
     const numImagesToScrape = 20;
