@@ -23,6 +23,8 @@ class ImageSeeder {
     // copy image urls into the images table of database
     const numImagesToScrape = 20;
     try {
+      console.log("line 26, trying ...");
+
       const scrape = await google.list({
         keyword: "sad animal facts site:sadanimalfacts.com",
         num: numImagesToScrape,
@@ -31,8 +33,12 @@ class ImageSeeder {
           show: false //hides the chromium window that nightmare uses
         }
       });
+      console.log("line 36, got a list ...");
       console.log(`first ${numImagesToScrape} results from google`);
       for (let i = 0; i < scrape.length; i++) {
+        console.log("line 39, url for image", i)
+        console.log(image.url);
+        
         const image = scrape[i];
         // console.log(image.url);
         // console.log(i);
