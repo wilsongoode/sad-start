@@ -18,5 +18,5 @@ const Route = use('Route')
 const Database = use('Database')
 
 Route.get('/', async () => {
-  return await Database.raw('select * from images order by random() limit 1')
+  return await Database.raw('select * from images order by rand() limit 1')
 })
